@@ -69,3 +69,12 @@
   margin-top: 7 * $unit;
   font-size: 2 * $unit;
 }
+
+.toggleButtonContainer {
+  display: block;
+}
+
+.toggleButton {
+  margin: 2 * $unit 2 * $unit $unit 3 * $unit;
+  width: 70%;
+}

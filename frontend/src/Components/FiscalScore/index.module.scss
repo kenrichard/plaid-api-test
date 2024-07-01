@@ -1,0 +1,33 @@
+@import "~plaid-threads/scss/variables";
+
+.grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 2 * $unit;
+}
+
+.accountHeading {
+  font-size: 3 * $unit;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.fiscalScore {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 6 * $unit;
+  font-weight: bold;
+}
+
+.fiscalScoreExplain {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-style: italic;
+  font-size: 2 * $unit;
+}
+
+.toggleButtonContainer {
+  display: block;
+}

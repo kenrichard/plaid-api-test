@@ -1,14 +1,13 @@
 import React, { useEffect, useContext, useCallback } from "react";
 
 import Header from "./Components/Headers";
-import Products from "./Components/ProductTypes/Products";
-import Items from "./Components/ProductTypes/Items";
 import Context from "./Context";
 
 import styles from "./App.module.scss";
+import FiscalScore from "./Components/FiscalScore";
 
 const App = () => {
-  const { linkSuccess, isItemAccess, isPaymentInitiation, dispatch } = useContext(Context);
+  const { linkSuccess, accessToken, dispatch } = useContext(Context);
 
   const getInfo = useCallback(async () => {
     const response = await fetch("/api/info", { method: "POST" });
@@ -17,9 +16,8 @@ const App = () => {
       return { paymentInitiation: false };
     }
     const data = await response.json();
-    const paymentInitiation: boolean = data.products.includes(
-      "payment_initiation"
-    );
+    const paymentInitiation: boolean =
+      data.products.includes("payment_initiation");
     dispatch({
       type: "SET_STATE",
       state: {
@@ -86,19 +84,7 @@ const App = () => {
     <div className={styles.App}>
       <div className={styles.container}>
         <Header />
-        {linkSuccess && (
-          <>
-            {isPaymentInitiation && (
-              <Products />
-            )}
-            {isItemAccess && (
-              <>
-                <Products />
-                <Items />
-              </>
-            )}
-          </>
-        )}
+        {linkSuccess && !!accessToken && <FiscalScore />}
       </div>
     </div>
   );
